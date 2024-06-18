@@ -1,0 +1,16 @@
+{
+  "name": "lecture2",
+  "version": "1.0.0",
+  "description": "This is Namaste React course by Akshay Saini",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "(https://github.com/harshil114/ReactLearning.git)"
+  },
+  "keywords": [],
+  "author": "Harshil Vispute",
+  "license": "ISC"
+}
