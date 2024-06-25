@@ -6,9 +6,11 @@ import ReactDOM from "react-dom/client";
 const TitleComponent = () => (
     <h1>Learn React</h1>
 );
-
+const number = 100;
 const HeadingComponent = () => (
     <div>
+        <h4>{number + number}</h4>
+        <h4>{10 + 20}</h4>
         <TitleComponent />
         <h3>Hello React</h3>
     </div>
