@@ -1,12 +1,29 @@
 import RestaurantCard from "./RestaurantCard";
-import resList from "../utils/mockData";
-import { useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 
 const Body = () => {
-  const [topRatedRestaurant,settopRatedRestaurant] = useState(resList);
+  const [restaurantList, setRestaurantList] = useState([]);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const data = await fetch(
+        "https://www.swiggy.com/mapi/homepage/getCards?lat=23.022505&lng=72.5713621"
+      );
+      const json = await data.json();
+      setRestaurantList(json?.data?.success?.cards);
+    } catch (e) {
+      setError(true);
+    }
+  };
+
   const handleFilter = () => {
-    const filterList = resList.filter((res) => res.info.avgRating > 4.5 );
-    settopRatedRestaurant(filterList);
+    const filterList = resList.filter((res) => res.info.avgRating > 4.5);
+    setRestaurantList(filterList);
   };
   return (
     <div className="body">
@@ -16,9 +33,15 @@ const Body = () => {
         </button>
       </div>
       <div className="res-container">
-        {topRatedRestaurant.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} resData={restaurant} />
-        ))}
+        {error ? (
+          <p style={{ color: "red", fontSize: "1.8rem" }}>
+            Server error. Please try again later.
+          </p>
+        ) : (
+          restaurantList.map((restaurant) => (
+            <RestaurantCard key={restaurant?.info?.id} resData={restaurant} />
+          ))
+        )}
       </div>
     </div>
   );
