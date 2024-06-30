@@ -1,5 +1,5 @@
 import RestaurantCard from "./RestaurantCard";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const Body = () => {
   const [restaurantList, setRestaurantList] = useState([]);
