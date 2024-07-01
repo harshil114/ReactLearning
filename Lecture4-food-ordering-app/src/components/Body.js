@@ -2,7 +2,6 @@ import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import resList from "../utils/mockData";
 
-
 const Body = () => {
   const [restaurantList, setRestaurantList] = useState(resList);
   // const [error, setError] = useState(false);
@@ -50,8 +49,6 @@ const Body = () => {
           <RestaurantCard key={restaurant.info.id} resData={restaurant} />
         ))}
       </div>
-
-
     </div>
   );
 };
