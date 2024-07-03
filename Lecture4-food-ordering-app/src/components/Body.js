@@ -4,9 +4,9 @@ import resList from "../utils/mockData";
 import Shimmer from "./Shimmer";
 
 const Body = () => {
-  const [restaurantList, setRestaurantList] = useState(resList);
+  const [listOfRestaurant, setListOfRestaurant] = useState(resList);
   const [searchText, setSearchText] = useState("");
-  const [filteredRestaurant , setFilteredRestaurant] = useState([]);
+  const [filteredRes , setFilteredRes] = useState([]);
   // const [error, setError] = useState(false);
 
   // useEffect(() => {
@@ -19,19 +19,19 @@ const Body = () => {
   //       "https://www.swiggy.com/mapi/homepage/getCards?lat=23.022505&lng=72.5713621"
   //     );
   //     const json = await data.json();
-  //     setRestaurantList(json?.data?.success?.cards);
+  //     setListOfRestaurant(json?.data?.success?.cards);
   //   } catch (e) {
   //     setError(true);
   //   }
   // };
 
   const handleFilter = () => {
-    const filterList = resList.filter((res) => res.info.avgRating > 4.5);
-    setRestaurantList(filterList);
-    setRestaurantList(filterList);
+    const filterResList = resList.filter((res) => res.info.avgRating > 4.5);
+     setListOfRestaurant(filterResList);
+     setFilteredRes(filterResList);
   };
 
-  return restaurantList.length === 0 ? (
+  return listOfRestaurant.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body">
@@ -47,10 +47,10 @@ const Body = () => {
           />
           <button
             onClick={() => {
-              const filteredRestaurant = restaurantList.filter((res) =>
+              const filteredRestaurant = listOfRestaurant.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
-              setFilteredRestaurant(filteredRestaurant);
+              setFilteredRes(filteredRestaurant);
             }}
           >
             Search
@@ -66,13 +66,13 @@ const Body = () => {
             Server error. Please try again later.
           </p>
         ) : (
-          restaurantList.map((restaurant) => (
+          listOfRestaurant.map((restaurant) => (
             <RestaurantCard key={restaurant?.info?.id} resData={restaurant} />
           ))
         )}
       </div> */}
       <div className="res-container">
-        {filteredRestaurant.map((restaurant) => (
+        {filteredRes.map((restaurant) => (
           <RestaurantCard key={restaurant.info.id} resData={restaurant} />
         ))}
       </div>
