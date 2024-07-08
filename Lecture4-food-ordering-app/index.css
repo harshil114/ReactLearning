@@ -83,3 +83,8 @@
 .filter{
     display: flex;
 }
+.user-card{
+    margin: 1rem;
+    padding: 10px;
+    border: 1px solid black;
+}
