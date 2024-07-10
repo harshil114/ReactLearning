@@ -37,7 +37,6 @@ const RestaurantMenu = () => {
             {item.card?.info.price / 100 || item.card?.info.defaultPrice / 100}
           </li>
         ))}
-        {/* <li>{itemCards[0].card.info.name}</li> */}
       </ul>
     </div>
   );
