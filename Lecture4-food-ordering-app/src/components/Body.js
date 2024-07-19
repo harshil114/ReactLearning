@@ -3,6 +3,7 @@ import { useState } from "react";
 import resList from "../utils/mockData";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
@@ -12,6 +13,9 @@ const Body = () => {
     const filteredList = resList.filter((res) => res.info.avgRating > 4.5);
     setFilteredRestaurant(filteredList);
   };
+
+  const onlineStatus = useOnlineStatus();
+  if (onlineStatus === false) return <h1>Hmm, looks you are offline</h1>;
 
   return resList.length === 0 ? (
     <Shimmer />
