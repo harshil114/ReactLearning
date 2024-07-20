@@ -20,18 +20,20 @@ const Body = () => {
   return resList.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">
-      <div className="filter">
+    <div className="body m-8">
+      <div className="filter flex mb-8">
         <div className="search">
           <input
             type="text"
-            className="search-box"
+            className="search-box border border-solid border-black h-6 font-medium"
+            placeholder="Search Restaurants"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           />
           <button
+          className="button px-4 py-2 mx-4 bg-green-600 rounded-sm hover:bg-green-700 font-medium active:bg-green-600"
             onClick={() => {
               const filteredRestaurant = resList.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -42,7 +44,7 @@ const Body = () => {
             Search
           </button>
         </div>
-        <button className="filter-btn" onClick={handleFilter}>
+        <button className="filter-btn bg-slate-200 px-5 rounded-sm font-medium hover:bg-slate-300 active:bg-slate-200" onClick={handleFilter}>
           Top Rated Restaurants
         </button>
       </div>
