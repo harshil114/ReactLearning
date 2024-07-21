@@ -1,4 +1,3 @@
-// import { LOGO_URL } from "../utils/constants";
 import logo from "../assets/logo.jpg";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -10,7 +9,7 @@ const Header = () => {
   return (
     <div className="flex justify-between items-center shadow-xl p-7">
       <div className="logo-container">
-        <img className="h-9 w-56 object-fill  " src={logo} />
+        <img className="h-9 w-56 object-fill" src={logo} />
       </div>
       <div className="nav-items mr-9">
         <ul className="flex">
@@ -28,8 +27,8 @@ const Header = () => {
             <Link to="/grocery">Grocery</Link>
           </li>
           <li className="mr-7 text-lg font-medium">Cart</li>
-          <button
-            className="login"
+          {/* <button
+            className="login p-2 bg-[#41d4d8] rounded-lg hover:bg-[#4adfe4] font-medium active:bg-[#41d4d8]"
             onClick={() => {
               btnNameReact === "Login"
                 ? setBtnNameReact("Logout")
@@ -37,7 +36,7 @@ const Header = () => {
             }}
           >
             {btnNameReact}
-          </button>
+          </button> */}
         </ul>
       </div>
     </div>
