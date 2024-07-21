@@ -33,7 +33,7 @@ const Body = () => {
             }}
           />
           <button
-          className="button px-4 py-2 mx-4 bg-green-600 rounded-sm hover:bg-green-700 font-medium active:bg-green-600"
+          className="button px-4 py-2 mx-4 bg-[#41d4d8] rounded-lg hover:bg-[#4adfe4] font-medium active:bg-[#41d4d8]"
             onClick={() => {
               const filteredRestaurant = resList.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -44,7 +44,7 @@ const Body = () => {
             Search
           </button>
         </div>
-        <button className="filter-btn bg-slate-200 px-5 rounded-sm font-medium hover:bg-slate-300 active:bg-slate-200" onClick={handleFilter}>
+        <button className="filter-btn bg-[#dbcf00] px-5 rounded-lg font-medium hover:bg-[#dad137] active:bg-[#dbcf00]" onClick={handleFilter}>
           Top Rated Restaurants
         </button>
       </div>
