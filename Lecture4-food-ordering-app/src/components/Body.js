@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import { useState } from "react";
 import resList from "../utils/mockData";
 import Shimmer from "./Shimmer";
@@ -8,6 +8,7 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [filteredRestaurant, setFilteredRestaurant] = useState(resList);
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
   const handleFilter = () => {
     const filteredList = resList.filter((res) => res.info.avgRating > 4.5);
@@ -33,7 +34,7 @@ const Body = () => {
             }}
           />
           <button
-          className="button px-4 py-2 mx-4 bg-[#41d4d8] rounded-lg hover:bg-[#4adfe4] font-medium active:bg-[#41d4d8]"
+            className="button px-4 py-2 mx-4 bg-[#41d4d8] rounded-lg hover:bg-[#4adfe4] font-medium active:bg-[#41d4d8]"
             onClick={() => {
               const filteredRestaurant = resList.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -44,7 +45,10 @@ const Body = () => {
             Search
           </button>
         </div>
-        <button className="filter-btn bg-[#dbcf00] px-5 rounded-lg font-medium hover:bg-[#dad137] active:bg-[#dbcf00]" onClick={handleFilter}>
+        <button
+          className="filter-btn bg-[#dbcf00] px-5 rounded-lg font-medium hover:bg-[#dad137] active:bg-[#dbcf00]"
+          onClick={handleFilter}
+        >
           Top Rated Restaurants
         </button>
       </div>
@@ -55,7 +59,11 @@ const Body = () => {
             key={restaurant.info.id}
             to={"/restaurant/" + restaurant.info.id}
           >
-            <RestaurantCard resData={restaurant} />
+            {restaurant.info.promoted ? (
+              <RestaurantCardPromoted resData={restaurant} />
+            ) : (
+              <RestaurantCard resData={restaurant} />
+            )}
           </Link>
         ))}
       </div>

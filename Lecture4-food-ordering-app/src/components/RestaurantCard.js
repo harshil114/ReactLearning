@@ -12,10 +12,26 @@ const RestaurantCard = ({ resData }) => {
       />
       <h3 className="text-lg font-bold py-2">{name}</h3>
       <h4 className="text-lg font-semibold">{avgRating}</h4>
-      <h4 className="text-lg font-semibold" style={{color:'rgba(2, 6, 12, 0.6)' }}>{cuisines.join(", ")}</h4>
+      <h4
+        className="text-lg font-semibold"
+        style={{ color: "rgba(2, 6, 12, 0.6)" }}
+      >
+        {cuisines.join(", ")}
+      </h4>
       {/* <h4 className="text-lg font-semibold"style={{color:'rgba(2, 6, 12, 0.6)' }}>{costForTwo}</h4> */}
     </div>
   );
+};
+
+export const withPromotedLabel = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute bg-black text-white m-4 px-1">Promoted</label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
 };
 
 export default RestaurantCard;
