@@ -32,13 +32,14 @@ const RestaurantMenu = () => {
 
   // console.log(categories);
   return (
-    <div className="menu max-w-[800px] mx-auto mt-12">
+    <div className="menu max-w-[800px] mx-auto mt-12">      
       <h1 className="res-name text-2xl font-bold mb-3">{name}</h1>
       <p className="text-lg mb-2" style={{ color: "rgba(2, 6, 12, 0.6)" }}>
         {cuisines.join(", ")} - {costForTwoMessage}
       </p>
+      <div className="bg-gray-200 w-90 h-4 mt-8"></div>
       {categories.map((category) => (
-        <RestaurantCategory data={category?.card?.card} />
+        <RestaurantCategory key={category?.card?.card.title} data={category?.card?.card} />
       ))}
     </div>
   );
