@@ -1,10 +1,12 @@
+import { useState } from "react";
 import ItemList from "./ItemList";
 
 const RestaurantCategory = (data) => {
   // console.log(data);
+
   return (
     <div className="m-4 p-4">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center cursor-pointer">
         <span className="font-bold text-lg">
           {data?.data?.title} ({data?.data?.title?.length})
         </span>
